@@ -20,9 +20,11 @@
 
 <body>
 
-	<section class="jumbotron text-center">
-		<h1>GitMet</h1>
-		<p>Remember to write something sexy here.<p>
+	<section class="container">
+		<header class="text-center">
+			<h1>GitMet</h1>
+			<p>It's like Match.com for your project.<p>
+		</header>
 	</section>
 
 	<section class="container">
@@ -31,11 +33,11 @@
 			<form role="form" id="search">
 				<div class="form-group">
 					<label for="inputLocation">Location</label>
-					<input type="text" class="form-control" id="inputLoaction" placeholder="e.g. Denver, Orlando, NYC, etc..." required>
+					<input type="text" class="form-control" id="inputLocation" placeholder="e.g. Denver, Orlando, NYC, etc..." required>
 				</div>
 				<div class="form-group">
-					<label for="inputLanguages">Language (<abbr rel="tooltip" data-placement="right" title="Optional.">?</abbr>)</label>
-					<input type="text" class="form-control" id="inputLanguages" placeholder="e.g. PHP, HTML, JavaScript, etc...">
+					<label for="inputLanguage">Language (<abbr rel="tooltip" data-placement="right" title="Optional.">?</abbr>)</label>
+					<input type="text" class="form-control" id="inputLanguage" placeholder="e.g. PHP, HTML, JavaScript, etc..." required>
 				</div>
 				<div class="text-right">
 					<button type="submit" class="btn btn-success btn-block">Search</button>
@@ -43,34 +45,15 @@
 			</form>
 		</div>
 
-		<div class="col-sm-8">
-			<h2>103 users found.</h2>
-
-			<div class="well">
-				<div class="row">
-					<div class="col-sm-2 col-xs-3">
-						<img class="img-rounded" height="50" src="https://secure.gravatar.com/avatar/25c7c18223fb42a4c6ae1c8db6f50f9b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png">
-					</div>
-					<div class="col-sm-4 col-xs-9" style="margin-top: 14px;">
-						<h3 class="panel-title"><a href="https://github.com/mojombo" target="_blank">mojombo</a></h3>
-					</div>
-					<div class="col-sm-6 hidden-xs" style="margin-top: 9px">
-						<div class="btn-group pull-right">
-							<button type="button" class="btn btn-success">GitHub Page</button>
-							<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
-								<span class="caret"></span>
-							</button>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="#">Repositories</a></li>
-								<li><a href="#">Organizations</a></li>
-								<li><a href="#">Subscriptions</a></li>
-								<li><a href="#">Followers</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
+		<div class="col-sm-8 results">
+			<div id="begin" class="jumbotron">
+				<p>Find GitHub users near you by using this simple application.  Just type in where you're at and what you program in and we'll do the rest.  If you're more of a generalist, you can just leave the <em>'language'</em> input blank.</p>
 			</div>
-
+			<div id="loading" class="hidden">
+				<h1>Loading...</h1>
+			</div>
+			<h2></h2>
+			<div id="display"></div>
 		</div>
 
 
@@ -81,6 +64,34 @@
 			&copy; 2014 GitMet.
 		</footer>
 	</div>
+
+	<div class="template hidden">
+		<div class="well">
+			<div class="row">
+				<div class="col-sm-2 col-xs-3">
+					<img class="img-rounded" height="50" src="">
+				</div>
+				<div class="col-sm-4 col-xs-9" style="margin-top: 14px;">
+					<h3 class="panel-title"><a id="username" href="" target="_blank"></a></h3>
+				</div>
+				<div class="col-sm-6 hidden-xs" style="margin-top: 9px">
+					<div class="btn-group pull-right">
+						<a href="" class="btn btn-success">GitHub Page</a>
+						<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="">Repositories</a></li>
+							<li><a href="">Organizations</a></li>
+							<li><a href="">Subscriptions</a></li>
+							<li><a href="">Followers</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </body>
 
 </html>
