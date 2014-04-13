@@ -1,51 +1,95 @@
 $(function() {
 
-	var begin = $('#begin');
-	var display = $('.results #display');
+	var introMessage = $('#begin');
+	var contentDisplay = $('.results').find('#display');
+	var languageInput = $('#inputLanguage');
+	var locationInput = $('#inputLocation');
+	var loading = $('#loading');
+	var template = $('.template').find('.well');
+	var resultCount = $('.results').find('h2');
 
-	$('#search').submit(function(e) {
-		e.preventDefault();
+	var languageInputVal;
+	var locationInputVal;
 
-		begin.hide();
-		$('.results #display').empty();
+	var ajaxSetup = function() {
+		return {
+			beforeSend: function() {
+				loading.removeClass('hidden');
+			},
+			complete: function() {
+				loading.addClass('hidden');
+			}
+		};
+	};
 
-		var url = "https://api.github.com/search/users";
-		var language = $('#inputLanguage').val();
-		var location = $('#inputLocation').val();
-		var q = "location:" + location;
+	var ajaxOptions = function(request) {
+		return {
+			url: "https://api.github.com/search/users",
+			data: request,
+			dataType: 'jsonp',
+			type: 'GET'
+		};
+	};
 
-		var request = {
+	var getRequest = function() {
+		var q = "location:" + locationInputVal;
+
+		if (languageInput.val()) {
+			q += " language:" + languageInputVal;
+		}
+
+		return {
 			q: q,
 			sort: "repositories",
 			order: "desc"
 		};
+	};
 
-		$.ajaxSetup({
-			beforeSend: function() {
-				$('#loading').removeClass('hidden');
-			},
-			complete: function() {
-				$('#loading').addClass('hidden');
-			}
-		});
+	var setContent = function(content) {
+		if (jQuery.isEmptyObject(content)) {
+			contentDisplay.append('<h1>No results</h1>');
+		} else {
+			resultCount.text(content.length + ' matches found.');
+			$.each(content, function(index, item) {
+				var result = template.clone();
 
-		var result = $.ajax({
-			url: url,
-			data: request,
-			dataType: 'jsonp',
-			type: 'GET'
-		})
-		.done(function(result) {
-			$.each(result.data.items, function(index, item) {
-				var temp = $('.template .well').clone();
-				temp.find('img').attr('src', item.avatar_url);
-				temp.find('#username').attr('href', item.html_url).text(item.login);
-				$('.results #display').append(temp).hide().fadeIn(500);
+				result.find('img').attr('src', item.avatar_url);
+				result.find('#username').attr('href', item.html_url).text(item.login);
+
+				contentDisplay.append(result);
 			});
-		})
-		.fail(function() {
-			alert('failed');
-		});
+		}
+	};
 
+	var reset = function() {
+		introMessage.hide();
+		contentDisplay.empty();
+		locationInput.val('');
+		languageInput.val('');
+		resultCount.empty();
+		locationInput.focus();
+	};
+
+	var search = function(callback) {
+		$.ajax(ajaxOptions(getRequest()))
+			.done(function(response) {
+				callback(response.data.items);
+			})
+			.fail(function() {
+				callback({});
+			});
+	};
+
+	$.ajaxSetup(ajaxSetup());
+
+	$('#search').submit(function(e) {
+		e.preventDefault();
+
+		locationInputVal = locationInput.val();
+		languageInputVal = languageInput.val();
+
+		reset();
+		search(setContent);
 	});
+
 });
