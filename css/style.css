@@ -1,0 +1,13 @@
+.jumbotron {
+	background: url('../images/top.jpg');
+	background-size: cover;
+	color: white;
+	text-shadow: 1px 1px 5px #000;
+}
+
+footer {
+	padding-top: 19px;
+	padding-bottom: 19px;
+	color: #777;
+	border-top: 1px solid #e5e5e5;
+}
