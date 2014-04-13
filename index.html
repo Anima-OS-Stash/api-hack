@@ -9,6 +9,7 @@
 
 	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="js/app.js"></script>
 
 	<script type="text/javascript">
 	    $(function () {
@@ -21,20 +22,20 @@
 
 	<section class="jumbotron text-center">
 		<h1>GitMet</h1>
-		<p>There are developers all over the world looking for people, just like <strong>you</strong>, to help them with their <em>groundbreaking</em> new projects.  Then again, you might want to help out locally.  If that's the case, we've got you covered, just type in the location of the project owner.
+		<p>Remember to write something sexy here.<p>
 	</section>
 
 	<section class="container">
 
 		<div class="col-sm-4">
-			<form role="form">
+			<form role="form" id="search">
 				<div class="form-group">
-					<label for="inputLanguages">Languages (<abbr rel="tooltip" data-placement="right" title="Separate multiple languages with a comma.">?</abbr>)</label>
-					<input type="text" class="form-control" id="inputLanguages" placeholder="e.g. PHP, HTML, JavaScript, etc...">
+					<label for="inputLocation">Location</label>
+					<input type="text" class="form-control" id="inputLoaction" placeholder="e.g. Denver, Orlando, NYC, etc..." required>
 				</div>
 				<div class="form-group">
-					<label for="inputLocation">Owner Location (<abbr rel="tooltip" data-placement="right" title="NYC will not find New York City and vice versa.">?</abbr>)</label>
-					<input type="text" class="form-control" id="inputLoaction" placeholder="e.g. Denver, Orlando, NYC, etc...">
+					<label for="inputLanguages">Language (<abbr rel="tooltip" data-placement="right" title="Optional.">?</abbr>)</label>
+					<input type="text" class="form-control" id="inputLanguages" placeholder="e.g. PHP, HTML, JavaScript, etc...">
 				</div>
 				<div class="text-right">
 					<button type="submit" class="btn btn-success btn-block">Search</button>
@@ -43,28 +44,33 @@
 		</div>
 
 		<div class="col-sm-8">
-			<h1>Anthology of Interest II</h1>
-			<p>Bender, hurry! This fuel's expensive! Also, we're dying! Dear God, they'll be killed on our doorstep! And there's no trash pickup until January 3rd. Do a flip! Soothe us with sweet lies. Stop it, stop it. It's fine. I will 'destroy' you!</p>
-			<h2>Why Must I Be a Crustacean in Love?</h2>
-			<p>Yes, I saw. You were doing well, until everyone died. It's a T. It goes "tuh". Look, everyone wants to be like Germany, but do we really have the pure strength of 'will'? Ok, we'll go deliver this crate like professionals, and then we'll go ride the bumper cars. But, like most politicians, he promised more than he could deliver.</p>
-			<ul>
-			<li>With gusto.</li>
-			<li>I just told you! You've killed me!</li>
-			<li>Okay, I like a challenge.</li>
-			<li>It's a T. It goes "tuh".</li>
-			</ul>
-			<h3>Rebirth</h3>
-			<p>Well, let's just dump it in the sewer and say we delivered it. No! The kind with looting and maybe starting a few fires! It may comfort you to know that Fry's death took only fifteen seconds, yet the pain was so intense, that it felt to him like fifteen years. And it goes without saying, it caused him to empty his bowels.</p>
-			<h4>Crimes of the Hot</h4>
-			<p>I am Singing Wind, Chief of the Martians. Good news, everyone! There's a report on TV with some very bad news! No! Don't jump!</p>
-			<ol>
-			<li>I don't want to be rescued.</li>
-			<li>Then we'll go with that data file!</li>
-			<li>And from now on you're all named Bender Jr.</li>
-			<li>Yep, I remember. They came in last at the Olympics, then retired to promote alcoholic beverages!</li>
-			</ol>
-			<h5>Lethal Inspection</h5>
-			<p>No argument here. You mean while I'm sleeping in it? Fry! Stay back! He's too powerful!</p>
+			<h2>103 users found.</h2>
+
+			<div class="well">
+				<div class="row">
+					<div class="col-sm-2 col-xs-3">
+						<img class="img-rounded" height="50" src="https://secure.gravatar.com/avatar/25c7c18223fb42a4c6ae1c8db6f50f9b?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png">
+					</div>
+					<div class="col-sm-4 col-xs-9" style="margin-top: 14px;">
+						<h3 class="panel-title"><a href="https://github.com/mojombo" target="_blank">mojombo</a></h3>
+					</div>
+					<div class="col-sm-6 hidden-xs" style="margin-top: 9px">
+						<div class="btn-group pull-right">
+							<button type="button" class="btn btn-success">GitHub Page</button>
+							<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Repositories</a></li>
+								<li><a href="#">Organizations</a></li>
+								<li><a href="#">Subscriptions</a></li>
+								<li><a href="#">Followers</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
 		</div>
 
 

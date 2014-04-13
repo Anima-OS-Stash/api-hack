@@ -5,7 +5,16 @@
 	text-shadow: 1px 1px 5px #000;
 }
 
+h2 {
+	margin-top: 0;
+}
+
+form {
+	margin-bottom: 10px;
+}
+
 footer {
+	margin-top: 19px;
 	padding-top: 19px;
 	padding-bottom: 19px;
 	color: #777;
