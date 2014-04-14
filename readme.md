@@ -1,4 +1,4 @@
 Thinkful FEWD API Hack
 ==========
 
-This is a project for [Thinkful](http://www.thinkful.com).  It will allow a user to see local images being sent to [Instagram](http://www.instagram.com) in real-time, displayed using [Google Maps](http://maps.google.com).
+This is a project for [Thinkful](http://www.thinkful.com).  It allows a user to search for GitHub users by location and language.  It provides usual information about GitHub users on result.
