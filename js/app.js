@@ -57,18 +57,23 @@ $(function() {
 		resultSpan.html(resultContent).hide().fadeIn(500);
 	};
 
+	var setUserInformation = function(item) {
+		var result = template.clone();
+
+		result.find('img').attr('src', item.avatar_url);
+		result.find('#username').attr('href', item.html_url).text(item.login);
+		result.find('#profile').attr('href', item.html_url);
+
+		return result;
+	};
+
 	var setContent = function(content) {
 		if (jQuery.isEmptyObject(content)) {
 			contentDisplay.append('<h1>No results</h1>');
 		} else {
 			setFeedback(content.length);
 			$.each(content, function(index, item) {
-				var result = template.clone();
-
-				result.find('img').attr('src', item.avatar_url);
-				result.find('#username').attr('href', item.html_url).text(item.login);
-				result.find('#profile').attr('href', item.html_url);
-
+				var result = setUserInformation(item);
 				contentDisplay.append(result).hide().fadeIn(500);
 			});
 		}
