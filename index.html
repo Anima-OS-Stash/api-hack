@@ -36,7 +36,7 @@
 					<input type="text" class="form-control" id="inputLocation" placeholder="e.g. Denver, Orlando, NYC, etc..." required>
 				</div>
 				<div class="form-group">
-					<label for="inputLanguage">Language (<abbr rel="tooltip" data-placement="right" title="Optional.">?</abbr>)</label>
+					<label for="inputLanguage">Language (optional)</label>
 					<input type="text" class="form-control" id="inputLanguage" placeholder="e.g. PHP, HTML, JavaScript, etc...">
 				</div>
 				<div class="text-right">
@@ -49,10 +49,10 @@
 			<div id="begin" class="jumbotron">
 				<p>Find GitHub users near you by using this simple application.  Just type in where you're at and what you program in and we'll do the rest.  If you're more of a generalist, you can just leave the <em>'language'</em> input blank.</p>
 			</div>
-			<div id="loading" class="hidden">
-				<h1>Loading...</h1>
+			<div id="loading" class="text-center hidden">
+				<img src="images/loading.gif" style="height:50px;margin-top:100px">
 			</div>
-			<h2></h2>
+			<h2><abbr rel="tooltip" data-placement="right" title="Query returns 30 max results"></abbr><span></span></h2>
 			<div id="display"></div>
 		</div>
 
@@ -76,15 +76,11 @@
 				</div>
 				<div class="col-sm-6 hidden-xs" style="margin-top: 9px">
 					<div class="btn-group pull-right">
-						<a href="" class="btn btn-success">GitHub Page</a>
+						<a href="" target="_blank" id="profile" class="btn btn-success">GitHub Profile</a>
 						<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
 							<span class="caret"></span>
 						</button>
 						<ul class="dropdown-menu" role="menu">
-							<li><a href="">Repositories</a></li>
-							<li><a href="">Organizations</a></li>
-							<li><a href="">Subscriptions</a></li>
-							<li><a href="">Followers</a></li>
 						</ul>
 					</div>
 				</div>
