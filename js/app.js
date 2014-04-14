@@ -1,5 +1,6 @@
 $(function() {
 
+	/*--- jQuery DOM element variables ---*/
 	var loading = $('#loading');
 	var introMessage = $('#begin');
 	var template = $('.template').find('.well');
@@ -9,9 +10,16 @@ $(function() {
 	var resultAbbr = $('.results').find('h2').find('abbr');
 	var resultSpan = $('.results').find('h2').find('span');
 
+	/*--- Used for temporary storage of language and location values ---*/
 	var languageInputVal;
 	var locationInputVal;
 
+	/**
+	 * Contains all AJAX setup information.
+	 *
+	 * @params void
+	 * @return object
+	 */
 	var ajaxSetup = function() {
 		return {
 			beforeSend: function() {
@@ -25,6 +33,12 @@ $(function() {
 		};
 	};
 
+	/**
+	 * Allows for defining options to be used in AJAX request.
+	 *
+	 * @params object
+	 * @return object
+	 */
 	var ajaxOptions = function(request) {
 		return {
 			url: "https://api.github.com/search/users",
@@ -34,6 +48,12 @@ $(function() {
 		};
 	};
 
+	/**
+	 * Defines request to be used in ajaxOptions function.
+	 *
+	 * @params void
+	 * @return object
+	 */
 	var getRequest = function() {
 		var q = "location:" + locationInputVal;
 
@@ -48,6 +68,12 @@ $(function() {
 		};
 	};
 
+	/**
+	 * Displays feedback about number of matches found.
+	 *
+	 * @params integer
+	 * @return void
+	 */
 	var setFeedback = function(count) {
 		var resultContent = ' found for <em>' + languageInputVal;
 		resultContent += '</em> programmers in <em>' + locationInputVal;
@@ -57,6 +83,12 @@ $(function() {
 		resultSpan.html(resultContent).hide().fadeIn(500);
 	};
 
+	/**
+	 * Fills in cloned template with user's information.
+	 *
+	 * @params object
+	 * @return object
+	 */
 	var setUserInformation = function(item) {
 		var result = template.clone();
 
@@ -67,6 +99,12 @@ $(function() {
 		return result;
 	};
 
+	/**
+	 * Loops through each AJAX response array and appends to content.
+	 *
+	 * @params array of objects
+	 * @return void
+	 */
 	var setContent = function(content) {
 		if (jQuery.isEmptyObject(content)) {
 			contentDisplay.append('<h1>No results</h1>');
@@ -79,6 +117,12 @@ $(function() {
 		}
 	};
 
+	/**
+	 * Resets all content and feedback for next query.
+	 *
+	 * @params function definition
+	 * @return void
+	 */
 	var reset = function(callback) {
 		locationInputVal = locationInput.val();
 		languageInputVal = languageInput.val();
@@ -108,6 +152,12 @@ $(function() {
 			});
 	};
 
+	/**
+	 * Performs initial AJAX call.
+	 *
+	 * @params function definition
+	 * @return void
+	 */
 	var search = function(callback) {
 		$.ajax(ajaxOptions(getRequest()))
 			.done(function(response) {
@@ -118,8 +168,10 @@ $(function() {
 			});
 	};
 
+	/*--- AJAX setup function ---*/
 	$.ajaxSetup(ajaxSetup());
 
+	/*--- Performs initial action on search form submit ---*/
 	$('#search').submit(function(e) {
 		e.preventDefault();
 		reset(function() {
